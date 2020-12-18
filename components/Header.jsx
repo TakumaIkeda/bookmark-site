@@ -36,6 +36,17 @@ const Header = () => {
     "-translate-y-2": open,
   });
 
+  const overlay = ClassNames({
+    "absolute": true,
+    "top-0": true,
+    "left-0": true,
+    "w-screen": true,
+    "h-screen": true,
+    "hidden": !open,
+    "opacity-70": open,
+    "bg-black": true,
+  });
+
   const handleMenuClick = () => {
     handleMenu(!open);
   };
@@ -44,7 +55,7 @@ const Header = () => {
     <header className="border-b p-2 flex justify-between">
       <div className="flex">
         <button
-          className="p-0 h-5 w-5 focus:outline-none flex flex-col justify-around mr-4 my-auto md:hidden"
+          className="p-0 h-5 w-5 focus:outline-none flex flex-col justify-around mr-4 my-auto md:hidden z-20"
           onClick={handleMenuClick}
         >
           <span className={hamburger1Class}></span>
@@ -62,6 +73,7 @@ const Header = () => {
           <li>bbb</li>
         </ul>
       </nav>
+      <div className={overlay} onClick={handleMenuClick}></div>
     </header>
   );
 };
